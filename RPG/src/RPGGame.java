@@ -35,7 +35,7 @@ public class RPGGame implements KeyListener {
 	private TradingPost tP = new TradingPost();
 
 	// these variables are all ArrayLists of other variables
-	private ArrayList<String> keys = new ArrayList<String>();
+	private static ArrayList<String> keys = new ArrayList<String>();
 	private static ArrayList<GameObject> objects = new ArrayList<GameObject>();
 	private static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Wall> walls = new ArrayList<Wall>();
@@ -52,7 +52,6 @@ public class RPGGame implements KeyListener {
 	private boolean invenShown = false; // inventory shown
 	private boolean levelDone = false;
 	private boolean tradeOpen = false;
-	private boolean pHit = false;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	// these are getters for variables
@@ -469,8 +468,8 @@ public class RPGGame implements KeyListener {
 	}
 
 	private void checkSpawns(Enemy e2, int level) {
-		int x = GameObject.randInt(300, StartGame.SCREEN_WIDTH - 50 - e2.WIDTH) / 50;
-		int y = GameObject.randInt(300, StartGame.SCREEN_HEIGHT - 50 - e2.WIDTH) / 50;
+		int x = GameObject.randInt(50, StartGame.SCREEN_WIDTH - 50 - e2.WIDTH) / 50;
+		int y = GameObject.randInt(50, StartGame.SCREEN_HEIGHT - 50 - e2.WIDTH) / 50;
 		if (e2 instanceof Demon) {
 			e2 = null;
 			e2 = new Demon(x * 50, y * 50, level);
