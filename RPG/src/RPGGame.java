@@ -172,12 +172,13 @@ public class RPGGame implements KeyListener {
 								(int) go.getCY());
 					}
 				}
-
+				//this is for drawing damage on crates
+				/* 
 				for (GameObject go : damagedObjects) {
 					if (!(go instanceof Enemy) && !go.getInvincibility() && go.getHealth() > 0) {
 						g.drawString("" + (int) go.getHealth(), (int) go.getCX() - 8, (int) go.getCY());
 					}
-				}
+				}*/
 
 				// this is where level number is drawn
 				g.setColor(Color.WHITE);
@@ -415,14 +416,10 @@ public class RPGGame implements KeyListener {
 		if (enemies.isEmpty()) {
 			if (levelDone == false) {
 				for (GameObject obj : objects) {
-					if (obj.health > 1) {
-						if (obj instanceof Crate) {
-							obj.health = 1;
+						if ((obj instanceof Crate)||(obj instanceof Barrel)) {
+							obj.health/=obj.getMaxHealth();
+							obj.maxHealth=1;
 						}
-						if (obj instanceof Barrel) {
-							obj.health = 1;
-						}
-					}
 				}
 			}
 			levelDone = true;
@@ -908,6 +905,13 @@ public class RPGGame implements KeyListener {
 					if (g.collides(g1)) {
 						here = false;
 					}
+				}
+				if (s.equals("portal")) {
+					double dx= player.getLocX()-r;
+					double dy = player.getLocY()-c;
+					double mag = Math.sqrt(dx*dx+dy*dy);
+					if (mag<150)
+						here=false;
 				}
 				if (here) {
 					if (s.equals("portal")) {
