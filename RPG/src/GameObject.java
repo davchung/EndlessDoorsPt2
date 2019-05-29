@@ -112,7 +112,9 @@ public abstract class GameObject {
 	}
 
 	public double getHealth() {
-		return this.health;
+		int h = (int)(this.health*10);
+		double he = (double)h/10;
+		return he;
 	}
 
 	public double getMaxHealth() {
