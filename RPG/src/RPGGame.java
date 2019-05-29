@@ -245,6 +245,8 @@ public class RPGGame implements KeyListener {
 						map.addObjs();
 						objects.addAll(map.getEObjs());
 						findEmptyPlace("player");
+						player.addCooldown(20);
+						player.addSpecialCooldown(20);
 						setEnemies(Map.getLevel());
 						levelDone = false;
 						objects.remove(portal);

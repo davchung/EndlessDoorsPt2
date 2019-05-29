@@ -7,10 +7,10 @@ public class Demon extends Enemy {
 	private BufferedImage dmg;
 
 	public Demon(double x, double y, int level) {
-		super(x, y, 100, 100, level,idle.getFirst());
+		super(x, y, 100, 100, level, idle.getFirst());
 		dmg = super.getImage("sprites/big_demon_damage.png");
-		this.increaseMaxHealth(this.health);
-		damage+=level*2;
+		this.increaseMaxHealth(this.health*1.5);
+		damage += level * 2;
 	}
 
 	@Override
@@ -21,15 +21,17 @@ public class Demon extends Enemy {
 			betterDraw(g);
 		}
 	}
+
 	@Override
 	public Animation getRun() {
 		return run;
 	}
+
 	@Override
 	public Animation getIdle() {
 		return idle;
 	}
-	
+
 	public void betterDraw(Graphics g) {
 		double r = getRight() / Math.abs(getRight());
 		int dx = 0;
@@ -43,6 +45,7 @@ public class Demon extends Enemy {
 		g.drawImage(getIdle().getImage(), (int) super.locX + dx, (int) super.locY - 20, (int) (r * super.WIDTH),
 				(int) super.HEIGHT + 20, null);
 	}
+
 	public void betterDraw(Graphics g, BufferedImage i) {
 		double r = getRight() / Math.abs(getRight());
 		int dx = 0;
@@ -96,7 +99,7 @@ public class Demon extends Enemy {
 		wallCollision();
 		if (this.canAttack()) {
 			RPGGame.setEnemyAttack(new Attack((int) getCX(), (int) getCY(), WIDTH * 3 / 4, HEIGHT * 3 / 4, WIDTH,
-					HEIGHT, x, y, 3, 500,this.getDamage(), "sprites/fireball.png"));		
+					HEIGHT, x, y, 3, 500, this.getDamage(), "sprites/fireball.png"));
 			this.addCooldown(300);
 		}
 		RPGGame.getObjects().add(this);
@@ -114,7 +117,7 @@ public class Demon extends Enemy {
 				super.moveX(dx / 5);
 				super.moveY(dy / 5);
 				if (!(i instanceof Enemy)) {
-					i.hit(this.getDamage()/2);
+					i.hit(this.getDamage() / 2);
 				}
 			}
 
@@ -124,6 +127,26 @@ public class Demon extends Enemy {
 				wallCollision();
 			}
 		}
+
+	}
+
+	@Override
+	public void uponRemoval() {
+		int decide = (int) (Math.random() * 100);
+		if (decide >= 75) {
+			RPGGame.getObjects()
+					.add(new Coin(this.getLocX(), this.getLocY(), (int) (decide / 5 + Map.roomCount * 1.75)));
+		} else if (decide >= 50)
+			RPGGame.getObjects().add(new Coin(this.getLocX(), this.getLocY(), (int) (decide / 4 + Map.roomCount * 2)));
+		else if (decide >= 25)
+			RPGGame.getObjects()
+					.add(new Coin(this.getLocX(), this.getLocY(), decide / 3 + (int) (Map.roomCount * 2.15)));
+		else {
+			RPGGame.getObjects()
+					.add(new Coin(this.getLocX(), this.getLocY(), decide / 2 + (int) (Map.roomCount * 2.25)));
+		}
+		
+		RPGGame.getObjects().add(new Potion(this.getLocX()+50, this.getLocY(), "yellow"));
 
 	}
 
