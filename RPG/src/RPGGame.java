@@ -10,7 +10,7 @@ import java.io.IOException;
 public class RPGGame implements KeyListener {
 
 	// these are all variables that allow the game to run
-	private JFrame mainFrame = new JFrame("Role-Playing Game");
+	private JFrame mainFrame = new JFrame("Endless Doors");
 	private JPanel mainPanel;
 	private static Timer timer;
 	private static final int REFRESH_RATE = 10;
