@@ -187,7 +187,10 @@ public class RPGGame implements KeyListener {
 				if (lev > 5)
 					lev = 5;
 				lev = (Map.getLevel() / 7) * 5 + lev;
-				if (lev == 0) {
+				if (lev < 0) {
+					g.drawString("Level: game over", StartGame.SCREEN_WIDTH - 115, 18);
+				}
+				else if (lev == 0) {
 					g.drawString("Level: tutorial", StartGame.SCREEN_WIDTH - 110, 18);
 				}
 				else {

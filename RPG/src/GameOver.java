@@ -20,7 +20,7 @@ public class GameOver extends GameGUI {
 		g.drawString("Game Over!", StartGame.SCREEN_WIDTH * 1 / 4, StartGame.SCREEN_HEIGHT * 4 / 10 - 20);
 		
 		g.setFont(new Font("Chelsea", 0, 60));
-		g.drawString("Your score: " + score, StartGame.SCREEN_WIDTH * 2 / 6, StartGame.SCREEN_HEIGHT * 6 / 10 - 10);
+		//g.drawString("Your score: " + score, StartGame.SCREEN_WIDTH * 2 / 6, StartGame.SCREEN_HEIGHT * 6 / 10 - 10);
 		g.drawString("Type N to return to start.", StartGame.SCREEN_WIDTH * 1 / 5, StartGame.SCREEN_HEIGHT * 7 / 10);
 	}
 }

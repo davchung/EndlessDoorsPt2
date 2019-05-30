@@ -74,40 +74,47 @@ public class TradingPost extends GameGUI {
 		g.drawString("[1] " + slot1, LEFT_MARGIN, yVal);
 		yVal += 25;
 		g.setFont(new Font("Chelsea", 0, END_FONT));
-		g.drawString("Cost: " + slot1.getGoldCost() + ", Attack damage: " + ((Weapon) slot1).getAtkDmg(), LEFT_MARGIN + LEFT_INDENT, yVal);
+		g.drawString("Cost: " + slot1.getGoldCost() + ", Attack damage: " + retrieveAtkDmg(slot1, RPGGame.getPlayer()), LEFT_MARGIN + LEFT_INDENT, yVal);
 		yVal += 40;
 
 		g.setFont(new Font("Chelsea", 0, BODY_FONT));
 		g.drawString("[2] " + slot2, LEFT_MARGIN, yVal);
 		yVal += 25;
 		g.setFont(new Font("Chelsea", 0, END_FONT));
-		g.drawString("Cost: " + slot2.getGoldCost() + ", Attack damage: " + ((Weapon) slot2).getAtkDmg(), LEFT_MARGIN + LEFT_INDENT, yVal);
+		g.drawString("Cost: " + slot2.getGoldCost() + ", Attack damage: " + retrieveAtkDmg(slot2, RPGGame.getPlayer()), LEFT_MARGIN + LEFT_INDENT, yVal);
 		yVal += 40;
 
 		g.setFont(new Font("Chelsea", 0, BODY_FONT));
 		g.drawString("[3] " + slot3, LEFT_MARGIN, yVal);
 		yVal += 25;
 		g.setFont(new Font("Chelsea", 0, END_FONT));
-		g.drawString("Cost: " + slot3.getGoldCost() + ", Attack damage: " + ((Weapon) slot3).getAtkDmg(), LEFT_MARGIN + LEFT_INDENT, yVal);
+		g.drawString("Cost: " + slot3.getGoldCost() + ", Attack damage: " + retrieveAtkDmg(slot3, RPGGame.getPlayer()), LEFT_MARGIN + LEFT_INDENT, yVal);
 		yVal += 40;
 
 		g.setFont(new Font("Chelsea", 0, BODY_FONT));
 		g.drawString("[4] " + slot4, LEFT_MARGIN, yVal);
 		yVal += 25;
 		g.setFont(new Font("Chelsea", 0, END_FONT));
-		g.drawString("Cost: " + slot4.getGoldCost() + ", Attack damage: " + ((Weapon) slot4).getAtkDmg(), LEFT_MARGIN + LEFT_INDENT, yVal);
+		g.drawString("Cost: " + slot4.getGoldCost() + ", Attack damage: " + retrieveAtkDmg(slot4, RPGGame.getPlayer()), LEFT_MARGIN + LEFT_INDENT, yVal);
 		yVal += 40;
 
 		g.setFont(new Font("Chelsea", 0, BODY_FONT));
 		g.drawString("[5] " + slot5, LEFT_MARGIN, yVal);
 		yVal += 25;
 		g.setFont(new Font("Chelsea", 0, END_FONT));
-		g.drawString("Cost: " + slot5.getGoldCost() + ", Attack damage: " + ((Weapon) slot5).getAtkDmg(), LEFT_MARGIN + LEFT_INDENT, yVal);
+		g.drawString("Cost: " + slot5.getGoldCost() + ", Attack damage: " + retrieveAtkDmg(slot5, RPGGame.getPlayer()), LEFT_MARGIN + LEFT_INDENT, yVal);
 		yVal += 40;
 
 		g.setFont(new Font("Chelsea", 0, END_FONT));
 		g.drawString("Press I to return to game.", LEFT_MARGIN, yVal);
 		yVal += 20;
 		g.drawString("Thanks for playing our game!", LEFT_MARGIN, yVal);
+	}
+	
+	private int retrieveAtkDmg(Item itm, Player player) {
+		if (player instanceof Archer) {
+			return ((Weapon) itm).getAtkDmg() / 2;
+		}
+		return ((Weapon) itm).getAtkDmg();
 	}
 }
