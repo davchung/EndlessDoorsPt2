@@ -70,7 +70,7 @@ public abstract class GameObject {
 		int decide = (int) (Math.random() * 100);
 		if (this instanceof Chest) {
 			if (decide <= 10)
-				RPGGame.getObjects().add(new Potion(this.getLocX(), this.getLocY(), "yellow"));
+				new Potion("yellow").activate();
 			else {
 				RPGGame.getObjects()
 						.add(new Coin(this.getLocX(), this.getLocY(), decide / 6 + (int) (Map.roomCount * 1.5)));
@@ -94,10 +94,6 @@ public abstract class GameObject {
 		}
 		if (this instanceof Coin) {
 			RPGGame.getInventory().addGold(health);
-		}
-
-		if (this instanceof Potion) {
-			((Potion) this).activate();
 		}
 	}
 

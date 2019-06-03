@@ -19,7 +19,7 @@ public class RPGGame implements KeyListener {
 
 	// these are all variables that are involved with playing the game
 	private static Player player;
-	public static int lastR, lastD=-1; // last direction the player was facing
+	public static int lastR, lastD = -1; // last direction the player was facing
 	private int facing = 1;
 	private Map map;
 	private Portal portal;
@@ -204,7 +204,7 @@ public class RPGGame implements KeyListener {
 				g.fillRect(20, 25,
 						(int) (((StartGame.SCREEN_WIDTH / 4) * (int) player.getHealth()) / player.getMaxHealth()), 16);
 				g.setColor(new Color(255, 255, 255)); // color: white
-				g.drawString("Player health: " + (int)player.getHealth(), 22, 38);
+				g.drawString("Player health: " + (int) player.getHealth(), 22, 38);
 				/*if(pHit) {
 					g.setColor(new Color(255,0,0));
 					g.fillRect(0,0,1050,100);
@@ -587,7 +587,7 @@ public class RPGGame implements KeyListener {
 
 			if (player.collides(objs) && objs instanceof Chest)
 				toRemove.add(objs);
-			if (player.collides(objs) && (objs instanceof Coin || objs instanceof Potion)) {
+			if (player.collides(objs) && (objs instanceof Coin)) {
 				toRemove.add(objs);
 			}
 			if (!objs.throughable) {
@@ -868,6 +868,7 @@ public class RPGGame implements KeyListener {
 					JOptionPane.showMessageDialog(null, "You already have this item in your Inventory.");
 				} else {
 					Inventory.getItems().add(tP.getSlot5());
+					tP.getSlot5().activate();
 					JOptionPane.showMessageDialog(null, "[5] has been added to your Inventory.");
 					i.subtractGold(tP.getSlot5().getGoldCost());
 				}

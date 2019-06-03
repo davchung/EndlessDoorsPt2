@@ -9,12 +9,13 @@ public class TradingPost extends GameGUI {
 	private Item slot2;
 	private Item slot3;
 	private Item slot4;
-	private Item slot5;
+	private Potion slot5;
 	private String[] weapons = new String[] { "regular_sword.png", "rusty_sword.png", "saw_sword.png",
 			"spiked_baton.png", "dueling_sword.png", "axe.png", "golden_sword.png", "hammer.png", "mace.png",
 			"machete.png", "katana.png", "big_hammer.png", "green_staff.png", "diamond_cleaver.png",
 			"lavish_gold_sword.png", "diamond_great_sword.png", "platinum_sword.png", "red_gem_sword.png",
 			"red_magic_staff.png" };
+	private String[] potions = new String[] { "blue", "green", "red", "yellow"};
 
 	// constructor #1 for Trading Post
 	public TradingPost() {
@@ -25,10 +26,10 @@ public class TradingPost extends GameGUI {
 	
 	public void refreshItems() {
 		slot1 = new Weapon(weapons[GameObject.randInt(0, 3)]);
-		slot2 = new Weapon(weapons[GameObject.randInt(4, 7)]);
-		slot3 = new Weapon(weapons[GameObject.randInt(8, 11)]);
-		slot4 = new Weapon(weapons[GameObject.randInt(12, 15)]);
-		slot5 = new Weapon(weapons[GameObject.randInt(16, 18)]);
+		slot2 = new Weapon(weapons[GameObject.randInt(4, 8)]);
+		slot3 = new Weapon(weapons[GameObject.randInt(9, 13)]);
+		slot4 = new Weapon(weapons[GameObject.randInt(14, 18)]);
+		slot5 = new Potion(potions[GameObject.randInt(0, 3)]);
 	}
 	// these are getters and setters
 	public Item getSlot1() {
@@ -47,7 +48,7 @@ public class TradingPost extends GameGUI {
 		return this.slot4;
 	}
 
-	public Item getSlot5() {
+	public Potion getSlot5() {
 		return this.slot5;
 	}
 
@@ -102,7 +103,7 @@ public class TradingPost extends GameGUI {
 		g.drawString("[5] " + slot5, LEFT_MARGIN, yVal);
 		yVal += 25;
 		g.setFont(new Font("Chelsea", 0, END_FONT));
-		g.drawString("Cost: " + slot5.getGoldCost() + ", Attack damage: " + retrieveAtkDmg(slot5, RPGGame.getPlayer()), LEFT_MARGIN + LEFT_INDENT, yVal);
+		g.drawString("Cost: " + slot5.getGoldCost() + "  /  " + slot5.getDescription(), LEFT_MARGIN + LEFT_INDENT, yVal);
 		yVal += 40;
 
 		g.setFont(new Font("Chelsea", 0, END_FONT));

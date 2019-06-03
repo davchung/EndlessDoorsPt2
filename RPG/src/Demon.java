@@ -135,19 +135,17 @@ public class Demon extends Enemy {
 		int decide = (int) (Math.random() * 100);
 		if (decide >= 75) {
 			RPGGame.getObjects()
-					.add(new Coin(this.getLocX(), this.getLocY(), (int) (decide / 5 + Map.roomCount * 1.75)));
+			.add(new Coin(this.getLocX(), this.getLocY(), (int) (decide / 5 + Map.roomCount * 1.75)));
 		} else if (decide >= 50)
 			RPGGame.getObjects().add(new Coin(this.getLocX(), this.getLocY(), (int) (decide / 4 + Map.roomCount * 2)));
 		else if (decide >= 25)
 			RPGGame.getObjects()
-					.add(new Coin(this.getLocX(), this.getLocY(), decide / 3 + (int) (Map.roomCount * 2.15)));
+			.add(new Coin(this.getLocX(), this.getLocY(), decide / 3 + (int) (Map.roomCount * 2.15)));
 		else {
 			RPGGame.getObjects()
-					.add(new Coin(this.getLocX(), this.getLocY(), decide / 2 + (int) (Map.roomCount * 2.25)));
+			.add(new Coin(this.getLocX(), this.getLocY(), decide / 2 + (int) (Map.roomCount * 2.25)));
 		}
-		
-		RPGGame.getObjects().add(new Potion(this.getLocX()+50, this.getLocY(), "yellow"));
-
+		new Potion("yellow").activate();
 	}
 
 	@Override

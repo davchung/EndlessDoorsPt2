@@ -26,10 +26,10 @@ public class MoveableObject extends GameObject{
 		}
 	}
 	public void addDamage(double amount) {
-		damage+=amount;
+		damage += amount;
 	}
 	public void setDamage(double d) {
-		damage= d;
+		damage = d;
 	}
 	public double getDamage() {
 		return this.damage;

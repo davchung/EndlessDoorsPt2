@@ -24,8 +24,6 @@ public class Map {
 		return this.eObjs;
 	}
 
-
-
 	public void setRoomCount(int x) {
 		roomCount = x;
 	}
@@ -367,7 +365,7 @@ public class Map {
 					eObjs.add(new Barrel(c * OBJ_WIDTH, r * OBJ_HEIGHT, OBJ_WIDTH, OBJ_HEIGHT));
 					break;
 				case 4:
-					eObjs.add(new Chest(c * OBJ_WIDTH, r * OBJ_HEIGHT, GameObject.randInt(10, 50)));
+					eObjs.add(new Chest(c * OBJ_WIDTH, r * OBJ_HEIGHT, 0));
 					break;
 				case 5:
 					RPGGame.trader.setLoc((c - 1) * OBJ_WIDTH, (r - 1) * OBJ_HEIGHT);
